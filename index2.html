@@ -1,0 +1,24 @@
+document.getElementById('form-simulador').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const areaTotal = parseFloat(document.getElementById('area-total').value);
+    const areaPreservada = parseFloat(document.getElementById('area-preservada').value);
+    const resultadoDiv = document.getElementById('resultado');
+
+    let percentualPreservado = (areaPreservada / areaTotal) * 100;
+    let mensagem = '';
+
+    if (percentualPreservado >= 20) {
+        mensagem = `Parabéns! 🌱 Você mantém ${percentualPreservado.toFixed(1)}% da área como preservação. Sustentabilidade excelente!`;
+        resultadoDiv.style.backgroundColor = '#C8E6C9';
+    } else if (percentualPreservado >= 10) {
+        mensagem = `Bom trabalho! 🌿 Você mantém ${percentualPreservado.toFixed(1)}% da área preservada. Pode melhorar!`;
+        resultadoDiv.style.backgroundColor = '#FFF9C4';
+    } else {
+        mensagem = `Atenção! ⚠️ Apenas ${percentualPreservado.toFixed(1)}% da área está preservada. É importante aumentar a área de preservação.`;
+        resultadoDiv.style.backgroundColor = '#FFCDD2';
+    }
+
+    resultadoDiv.textContent = mensagem;
+    resultadoDiv.classList.remove('escondido');
+});
